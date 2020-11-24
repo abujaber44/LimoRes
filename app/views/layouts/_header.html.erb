@@ -1,0 +1,24 @@
+<nav class="navbar mb-2">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    
+    </div>
+    <% if logged_in? %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log out", logout_path, class: "mx-2", method: :delete %></li> 
+      <% if admin? %>
+        <li><%= link_to "Drivers", drivers_path, class: "mx-2" %></li>
+        <li><%= link_to "Dispatch", future_reservations_url, class: "mx-2" %></li>
+        <li><%= link_to "Archive", archived_reservations_url, class: "mx-2" %></li>
+      </ul>
+      <% end %>
+    <% else %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log in", login_path, class: "mx-2" %></li> 
+        <li><%= link_to "Sign up", signup_path, class: "mx-2" %></li>
+        <li><%= link_to "Log in with Google", '/auth/google_oauth2', class: "mx-2" %></li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
+

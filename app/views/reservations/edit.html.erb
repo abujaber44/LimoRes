@@ -1,0 +1,31 @@
+<h3 class='text-center'>Edit Reservation for: <%= readable_date(@reservation)%></h3> <br>
+<div class="row">
+  <div class="col-md-4 offset-4">
+<%= form_for [@user, @reservation] do |f| %>
+<%= render 'shared/reservation_errors' %>
+
+  <%= f.label :date %>
+  <%= f.date_field :date, class: 'mb-1 form-control' %>
+  <br>
+  <br>
+  <%= f.label :time %>
+  <%= f.time_field :time, class: 'mb-1 form-control' %>
+  <br>
+  <br>
+  <%= f.label :pick_up %>
+  <%= f.text_field :pick_up, class: 'mb-1 form-control' %>
+  <br>
+  <br>
+  <%= f.label :drop_off %>
+  <%= f.text_field :drop_off, class: 'mb-1 form-control' %>
+  <br>
+  <br>
+  <%= f.label :vehicle_type %>
+  <%= f.select :vehicle_type, ['Sedan', 'SUV', 'Van'], class: 'mb-1 form-control' %>
+  <br>
+  <br>
+  <%= f.submit "Submit", class: "mt-2 btn btn-primary" %>
+<% end %>
+  </div>
+  </div>
+

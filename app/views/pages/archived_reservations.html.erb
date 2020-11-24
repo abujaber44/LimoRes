@@ -1,0 +1,28 @@
+<h3> Archived Reservations </h3> <br>
+
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Pick Up</th>
+    <th>Drop Off</th>
+    <th>Vehicle Type</th>
+    <th>Passenger</th>
+    <th>Driver</th>
+  </tr>
+ </thead>
+ <tbody>
+ <% @reservations.each do |r|%>
+  <tr>
+    <td><%= r.date.strftime('%a %d %b %Y') %></td>
+    <td><%= r.time %></td>
+    <td><%= r.pick_up %></td>
+    <td><%= r.drop_off %></td>
+    <td><%= r.vehicle_type %></td>
+    <td><%= r.user.name %></td>
+    <td><%= r.driver_id %></td>
+  </tr>
+ <% end %>
+</tbody>
+</table>

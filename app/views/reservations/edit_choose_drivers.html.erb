@@ -1,0 +1,17 @@
+ <h3 class='text-center'>Assign Reservation for: <%= @reservation.user.name %></h3> <br> <br>
+ <div class="row">
+ <div class="col-md-4 offset-4">
+ <ul>
+    <li>Date: <%= readable_date(@reservation) %></li>
+    <li>Time: <%= @reservation.time %></li>
+    <li>Vehicle Type: <%= @reservation.vehicle_type %></li>
+    <li>Pick Up: <%= @reservation.pick_up %></li>
+    <li>Drop Off: <%= @reservation.drop_off %></li>
+</ul><br>
+ <%= form_for @reservation, url: update_choose_drivers_path(@reservation) do |f| %>
+ <%= render 'shared/reservation_errors' %>
+  <h6>Select a Driver: <%= collection_select(:driver, :driver_id, @drivers, :id, :name, include_blank: true ) %></h6><br>
+  <%= f.submit "Assign Driver", class: "btn btn-primary" %>
+ <% end %>
+ </div>
+ </div>

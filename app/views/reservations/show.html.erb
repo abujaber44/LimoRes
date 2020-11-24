@@ -1,0 +1,19 @@
+<h3 class='text-center'>Viewing Reservation for <%= readable_date(@reservation) %></h3>
+<div class="row">
+  <div class="col-md-4 offset-4">
+<ul>
+    <li>Date: <%= readable_date(@reservation) %></li>
+    <li>Time: <%= @reservation.time %></li>
+    <li>Vehicle Type: <%= @reservation.vehicle_type %></li>
+    <li>Pick Up: <%= @reservation.pick_up %></li>
+    <li>Drop Off: <%= @reservation.drop_off %></li>
+</ul><br>
+
+
+<%= button_to "Edit", edit_reservation_path(@reservation),class: "mt-2 btn btn-primary", method: :get %> 
+<%= button_to "Cancel", reservation_path(@reservation),class: "mt-2 btn btn-primary", method: :delete  %> <br> <br>
+<%= link_to "View All Reservations", user_reservations_path(@user) %>
+</div>
+</div>
+
+

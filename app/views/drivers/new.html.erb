@@ -1,0 +1,16 @@
+<h3 class='text-center'>Add a New Driver:</h3> <br>
+<div class="row">
+  <div class="col-md-4 offset-4">
+<%= form_for @driver do |f| %>
+<%= render 'shared/driver_errors' %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'mb-1 form-control' %>
+  
+  <br>
+  <br>
+  <%= f.submit "Submit", class:"btn" %>
+<% end %>
+  </div>
+  </div>
+
