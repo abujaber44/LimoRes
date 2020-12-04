@@ -1,14 +1,14 @@
 <div class="row">
   <div class="offset-4 col-md-4">
-      <p class='text-center'>
       <h3 class='text-center'>List of All Drivers: </h3> <br> <br>
+      <p class='text-center'>
         <% @drivers.each do |d| %>
-        <ol>
-         <h5 class='text-center'><%= link_to d.name, driver_path(d) %></h5> 
-        </ol>
+        <ul>
+        <h5 class='text-center'><%= link_to d.name, driver_path(d) %></h5> 
+        </ul>
         <% end %>
-      </p>
+      </p>  <br> <br>
+     <h4 class='text-center'><%= link_to  "Add a New Driver", new_driver_path %>  </h4> 
   </div>
 </div>
 
-<%= link_to  "Add a New Driver", new_driver_path %>

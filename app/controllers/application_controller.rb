@@ -6,11 +6,16 @@ rescue_from CanCan::AccessDenied do |exception|
 end 
   
   def logged_in_user
-    unless params[:id].to_i == current_user.id || admin? 
-    flash[:danger] = "You do not have access to this page."
-    redirect_to user_path(current_user)
-   end
+    if !current_user
+      redirect_to root_path
+    else
+      unless params[:id].to_i == current_user.id || admin? 
+        flash[:danger] = "You do not have access to this page."
+        redirect_to user_path(current_user)
+       end
+    end
   end 
+
 
   # def redirect_if_not_logged_in
   #   if !current_user || params[:id].to_i == current_user.id 

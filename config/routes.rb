@@ -9,9 +9,12 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :reservations, only: [:new, :create, :show, :index]
+    resources :addresses, only: [:new, :create, :show, :index]
   end
 
   resources :reservations, only: [:edit, :update, :destroy]
+
+  resources :addresses, only: [:edit, :update, :destroy]
 
   resources :drivers
 

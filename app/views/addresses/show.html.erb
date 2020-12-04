@@ -1,0 +1,18 @@
+<h3 class='text-center'>Viewing Address for <%= @address.address_type %></h3>
+<div class="row">
+  <div class="col-md-4 offset-4">
+<ul>
+    <li>Street Address 1: <%= @address.street_address_1 %></li>
+    <li>Street Address 2: <%= @address.street_address_2 %></li>
+    <li>City: <%= @address.city %></li>
+    <li>State: <%= @address.state %></li>
+    <li>Zipcode: <%= @address.zipcode %></li>
+    <li>Address Type: <%= @address.address_type %></li>
+</ul><br>
+
+
+<%= button_to "Edit", edit_address_path(@address),class: "mt-2 btn btn-primary", method: :get %> 
+<%= button_to "Cancel", address_path(@address),class: "mt-2 btn btn-primary", method: :delete  %> <br> <br>
+<%= link_to "View All Addresses", user_addresses_path(@user) %>
+</div>
+</div>

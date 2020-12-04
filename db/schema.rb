@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_014520) do
+ActiveRecord::Schema.define(version: 2020_11_24_182415) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_address_1"
+    t.string "street_address_2"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.string "address_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"

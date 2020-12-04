@@ -1,14 +1,15 @@
 
-<h3> Future Reservations </h3> <br>
-
+<h3 class='text-center'>Future Reservations</h3> <br>
+<div class="row justify-content-center">
+ <div class="col-auto">
 <table class="table table-striped">
  <thead>
   <tr>
     <th>Date</th>
     <th>Time</th>
     <th>Pick Up</th>
-    <th>Drop Off</th>
-    <th>Vehicle Type</th>
+    <th white-space: nowrap>Drop Off</th>
+    <th white-space: nowrap>Vehicle Type</th>
     <th>Passenger</th>
     <th>Driver</th>
     <th></th>
@@ -16,24 +17,27 @@
  </thead>
  <tbody>
  <% @reservations.each do |r|%>
- <% if r.date >= Time.now %>
   <tr>
-    <td><%= r.date.strftime('%a %d %b %Y') %></td>
-    <td><%= r.time %></td>
-    <td><%= r.pick_up %></td>
-    <td><%= r.drop_off %></td>
-    <td><%= r.vehicle_type %></td>
-    <td><%= r.user.name %></td>
+    <td white-space: nowrap><%= r.date.strftime('%a %d %b %Y') %></td>
+    <td white-space: nowrap><%= r.time %></td>
+    <td white-space: nowrap><%= r.pick_up %></td>
+    <td white-space: nowrap><%= r.drop_off %></td>
+    <td white-space: nowrap><%= r.vehicle_type %></td>
+    <td white-space: nowrap><%= r.user.name %></td>
    <% if r.driver_id == nil %>
    <td></td>
-   <td><%= link_to "Assign", edit_choose_drivers_path(r) %></td>
+   <td white-space: nowrap><%= link_to "Assign", edit_choose_drivers_path(r) %></td>
    <% else %>
-   <td><%= r.driver.name %></td>
-   <td><%= link_to "Change Driver", edit_choose_drivers_path(r) %></td>
+   <td white-space: nowrap><%= r.driver.name %></td>
+   <td white-space: nowrap><%= link_to "Change Driver", edit_choose_drivers_path(r) %></td>
    <% end %>
   </tr>
-  <% end  %>
  <% end %>
 </tbody>
 </table>
+ </div>
+  </div>
+
+ 
+
 

@@ -21,7 +21,11 @@
     <td><%= r.drop_off %></td>
     <td><%= r.vehicle_type %></td>
     <td><%= r.user.name %></td>
-    <td><%= r.driver_id %></td>
+    <% if r.driver_id == nil %>
+   <td></td>
+   <% else %>
+   <td><%= r.driver.name %></td>
+   <% end %>
   </tr>
  <% end %>
 </tbody>

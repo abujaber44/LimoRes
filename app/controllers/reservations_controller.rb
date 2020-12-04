@@ -4,6 +4,8 @@ class ReservationsController < ApplicationController
   def new
     @reservation = current_user.reservations.new
     @user = current_user
+    @addresses = @user.addresses.all.collect {|a| [a.combine]} 
+    @addresses += ["Enter a New Address"]
   end
 
   def index
@@ -14,7 +16,17 @@ class ReservationsController < ApplicationController
 
   def create
     @user = current_user
-    @reservation = current_user.reservations.build(reservation_params)
+    @addresses = @user.addresses.all.collect {|a| [a.combine]} 
+    @reservation = Reservation.new
+    if params[:reservation][:pick_up] == "Enter a New Address" && params[:reservation][:drop_off] == "Enter a New Address"
+      @reservation = current_user.reservations.build(date: params[:reservation][:date], time: params[:reservation][:time], pick_up: params[:pick_up_other], drop_off: params[:drop_off_other], vehicle_type: params[:reservation][:vehicle_type] )
+    elsif params[:reservation][:pick_up] == "Enter a New Address"
+      @reservation = current_user.reservations.build(date: params[:reservation][:date], time: params[:reservation][:time], pick_up: params[:pick_up_other], drop_off: params[:reservation][:drop_off], vehicle_type: params[:reservation][:vehicle_type] )
+    elsif params[:reservation][:drop_off] == "Enter a New Address"
+      @reservation = current_user.reservations.build(date: params[:reservation][:date], time: params[:reservation][:time], pick_up: params[:reservation][:pick_up], drop_off: params[:drop_off_other], vehicle_type: params[:reservation][:vehicle_type] )
+    else
+      @reservation = current_user.reservations.build(reservation_params)
+    end
     authorize! :create, @reservation
     if @reservation.save
       flash[:success] = "Reservation has been created!"
@@ -50,7 +62,7 @@ class ReservationsController < ApplicationController
   def update_choose_drivers
     @reservation = Reservation.find(params[:id])
     if @reservation.update_attributes(update_driver)
-      flash[:success] = "Reservation assigned"
+      flash[:success] = "Reservation updated"
       redirect_to future_reservations_url
     else
       flash[:alert] = "Error"

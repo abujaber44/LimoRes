@@ -7,25 +7,43 @@
   <%= f.label :date %>
   <%= f.date_field :date, class: 'mb-1 form-control' %>
   <br>
-  <br>
   <%= f.label :time %>
   <%= f.time_field :time, class: 'mb-1 form-control' %>
   <br>
   <br>
+  <div class="font-italic">
+  <div class='text-center'> 
+  <p class="text-primary">Select a profile address or choose "Enter a New Address" if not listed </p>
+  </div>
+  </div>
   <%= f.label :pick_up %>
-  <%= f.text_field :pick_up, class: 'mb-1 form-control' %>
+  <%= f.select :pick_up, @addresses, include_blank: true  %>
+  <%= text_field_tag :pick_up_other, "",class: 'mb-1 form-control', placeholder: 'Enter a new address here ...' %>
   <br>
   <br>
   <%= f.label :drop_off %>
-  <%= f.text_field :drop_off, class: 'mb-1 form-control' %>
+  <%= f.select :drop_off, @addresses, include_blank: true  %>
+  <%= text_field_tag :drop_off_other, "",class: 'mb-1 form-control', placeholder: 'Enter a new address here ...' %>
   <br>
   <br>
   <%= f.label :vehicle_type %>
   <%= f.select :vehicle_type, ['Sedan', 'SUV', 'Van'], class: 'mb-1 form-control' %>
   <br>
   <br>
+
   <%= f.submit "Submit", class: "mt-2 btn btn-primary" %>
 <% end %>
   </div>
   </div>
+
+
+ 
+
+
+
+
+
+
+
+
 
