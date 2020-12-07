@@ -15,3 +15,13 @@ class Reservation < ApplicationRecord
       end
     end    
 end
+
+
+
+
+
+
+
+
+
+

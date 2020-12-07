@@ -6,13 +6,22 @@
     <li>Time: <%= @reservation.time %></li>
     <li>Vehicle Type: <%= @reservation.vehicle_type %></li>
     <li>Pick Up: <%= @reservation.pick_up %></li>
-    <li>Drop Off: <%= @reservation.drop_off %></li>
+    <li>Drop Off: <%= @reservation.drop_off %></li> <br>
+    <% if @reservation.driver_id == nil %>
+    <li>Driver: Not Assigned </li>
+    <% else %>
+    <li>Driver: <%= @reservation.driver.name %></li>
+    <% end %>
 </ul><br>
 
-
+<% if @reservation.date < Time.now %>
+<%= button_to "Delete", reservation_path(@reservation),class: "mt-2 btn btn-primary", method: :delete  %> <br> <br>
+<%= link_to "View All Reservations", user_reservations_path(@user) %>
+<% else %>
 <%= button_to "Edit", edit_reservation_path(@reservation),class: "mt-2 btn btn-primary", method: :get %> 
 <%= button_to "Cancel", reservation_path(@reservation),class: "mt-2 btn btn-primary", method: :delete  %> <br> <br>
 <%= link_to "View All Reservations", user_reservations_path(@user) %>
+<% end %>
 </div>
 </div>
 

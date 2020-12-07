@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 
   def index
     if params[:user_id]
-      @reservations = current_user.reservations.order("date")
+      @reservations = current_user.reservations.future.order("date")
     end 
   end
 
@@ -91,6 +91,13 @@ class ReservationsController < ApplicationController
     else
     @reservation = Reservation.find(params[:id])
     end
+  end
+
+  def past_reservations
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @reservations = current_user.reservations.archive.order("date")
+    end 
   end
 
   private

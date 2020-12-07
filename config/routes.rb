@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do 
     resources :reservations, only: [:new, :create, :show, :index]
     resources :addresses, only: [:new, :create, :show, :index]
+    get '/past_reservations', to: 'reservations#past_reservations'
   end
 
   resources :reservations, only: [:edit, :update, :destroy]
@@ -23,4 +24,11 @@ Rails.application.routes.draw do
 
   get 'reservations/:id/choose_drivers', to: 'reservations#edit_choose_drivers', as: 'edit_choose_drivers'
   patch 'reservations/:id/choose_drivers', to: 'reservations#update_choose_drivers', as: 'update_choose_drivers'
+
 end
+
+
+
+
+
+
